@@ -1,0 +1,49 @@
+table {
+    text-align: center;
+    border: 1px solid #000;
+    width: 500px;
+    height: 500px;
+    box-sizing: border-box;
+    border-collapse: collapse;
+    margin: 50px auto;
+  }
+  
+  tr {
+    border: 1px solid #000;
+    box-sizing: border-box;
+    height: 25%;
+  }
+  
+  th {
+    border: 1px solid #000;
+    box-sizing: border-box;
+    height: 25%;    
+  }
+
+  td {
+    border: 1px solid #000;
+    box-sizing: border-box;
+    height: 25%;    
+  }
+
+  td b {
+    writing-mode: vertical-rl;
+    transform: scale(-1);   
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  h3 {
+    font-style: italic;
+    font-weight: normal;
+  }
+
+.footer {
+    text-align: center;
+}
+
+a {
+    color: blue;
+}
