@@ -38,6 +38,7 @@ table {
   h3 {
     font-style: italic;
     font-weight: normal;
+    text-align: center;
   }
 
 .footer {
@@ -46,4 +47,8 @@ table {
 
 a {
     color: blue;
+}
+
+a:visited {
+  color: rgb(226, 98, 13);
 }
