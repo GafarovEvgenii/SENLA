@@ -1,0 +1,532 @@
+{
+	"info": {
+		"_postman_id": "e363da2f-9a2e-4da9-8994-d275d0180ced",
+		"name": "Магазин питомцев",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17972298",
+		"_collection_link": "https://sparrow077.postman.co/workspace/HW2.4~066d8c1d-60a4-4368-b543-cc946f91251c/collection/17972298-e363da2f-9a2e-4da9-8994-d275d0180ced?action=share&creator=17972298&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Создание пользователя",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json()\r",
+									"\r",
+									"pm.test(\"Создание пользователя. Проверка что статускод 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Создание пользователя. Проверка всей структуры ответа \", function (){\r",
+									"    pm.expect(jsonData).to.have.property(\"code\")\r",
+									"    pm.expect(jsonData).to.have.property(\"type\")\r",
+									"    pm.expect(jsonData).to.have.property(\"message\")\r",
+									"}) \r",
+									"\r",
+									"pm.test(\"Создание пользователя. Проверить что код = 200\", function () {\r",
+									"    pm.expect(jsonData.code).to.eql(200);\r",
+									"    pm.expect(jsonData.type).to.eql(\"unknown\");\r",
+									"    pm.expect(jsonData.message).to.eql(\"36\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 36,\r\n  \"username\": \"Sparrow\",\r\n  \"firstName\": \"Evgeny\",\r\n  \"lastName\": \"Gafarov\",\r\n  \"email\": \"7_jeka_7@mail.ru\",\r\n  \"password\": \"787898077\",\r\n  \"phone\": \"89001112233\",\r\n  \"userStatus\": 0\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}v2/user",
+							"host": [
+								"{{url}}v2"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Обновление пользователя",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json()\r",
+									"\r",
+									"pm.test(\"Обновление пользователя. Проверка что статускод 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Обновление пользователя. Проверка всей структуры ответа \", function (){\r",
+									"    pm.expect(jsonData).to.have.property(\"code\")\r",
+									"    pm.expect(jsonData).to.have.property(\"type\")\r",
+									"    pm.expect(jsonData).to.have.property(\"message\")\r",
+									"}) \r",
+									"\r",
+									"pm.test(\"Обновление пользователя. Проверка всей структуры ответа чему равны значения\", function () {\r",
+									"    pm.expect(jsonData.code).to.eql(200);\r",
+									"    pm.expect(jsonData.type).to.eql(\"unknown\");\r",
+									"    pm.expect(jsonData.message).to.eql(\"36\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 36,\r\n  \"username\": \"Sparrow\",\r\n  \"firstName\": \"Evgeny\",\r\n  \"lastName\": \"Gafarov\",\r\n  \"email\": \"999888@mail.ru\",\r\n  \"password\": \"787898077\",\r\n  \"phone\": \"89001112233\",\r\n  \"userStatus\": 0\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}v2/user/sparrow",
+							"host": [
+								"{{url}}v2"
+							],
+							"path": [
+								"user",
+								"sparrow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение информации по имени",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json()\r",
+									"\r",
+									"pm.test(\"Получение информации. Проверка что статускод 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Получение информации. Проверка всей структуры ответа \", function (){\r",
+									"    pm.expect(jsonData).to.have.property(\"firstName\")\r",
+									"    pm.expect(jsonData).to.have.property(\"lastName\")\r",
+									"    pm.expect(jsonData).to.have.property(\"email\")\r",
+									"}) \r",
+									"\r",
+									"pm.test(\"Обновление пользователя. Проверка всей структуры ответа чему равны значения\", function () {\r",
+									"    pm.expect(jsonData.username).to.eql(\"Sparrow\");\r",
+									"    pm.expect(jsonData.firstName).to.eql(\"Evgeny\");\r",
+									"    pm.expect(jsonData.lastName).to.eql(\"Gafarov\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Обновление пользователя. Проверить тип данных параметр ID\", function () {\r",
+									"pm.expect(jsonData.id).to.be.a(\"number\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}v2/user/Sparrow",
+							"host": [
+								"{{url}}v2"
+							],
+							"path": [
+								"user",
+								"Sparrow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удаление пользователя",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json()\r",
+									"\r",
+									"pm.test(\"Удаление пользователя. Проверка что статускод 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Удаление пользователя. Проверка всей структуры ответа \", function (){\r",
+									"    pm.expect(jsonData).to.have.property(\"code\")\r",
+									"    pm.expect(jsonData).to.have.property(\"type\")\r",
+									"    pm.expect(jsonData).to.have.property(\"message\")\r",
+									"}) \r",
+									"\r",
+									"pm.test(\"Удаление пользователя. Проверка всей структуры ответа чему равны значения\", function () {\r",
+									"    pm.expect(jsonData.code).to.eql(200);\r",
+									"    pm.expect(jsonData.type).to.eql(\"unknown\");\r",
+									"    pm.expect(jsonData.message).to.eql(\"Sparrow\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}v2/user/Sparrow",
+							"host": [
+								"{{url}}v2"
+							],
+							"path": [
+								"user",
+								"Sparrow"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pet",
+			"item": [
+				{
+					"name": "Создание питомца",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json()\r",
+									"const reqBody = JSON.parse(request.data)\r",
+									"\r",
+									"pm.environment.set(\"id\", jsonData.id)\r",
+									"pm.environment.set(\"status\", jsonData.status)\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверка что статускод 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверка что присутствует id в категориях \", function (){\r",
+									"    pm.expect(jsonData.category).to.have.property(\"id\")\r",
+									" }) \r",
+									"\r",
+									" pm.test(\"Создание питомца. Проверка name равен Рыбка\", function () {\r",
+									"    pm.expect(jsonData.category.name).to.eql(\"Рыбка\");\r",
+									" })\r",
+									"\r",
+									"  pm.test(\"Создание питомца. Проверка tags в самом первом блоке = лещ\", function () {\r",
+									"    pm.expect(jsonData.tags[0].name).to.eql(\"лещ\");\r",
+									" })\r",
+									"\r",
+									"   pm.test(\"Создание питомца. Проверка что в photoUrls в запросе равен photoUrls в ответе\", function () {\r",
+									"    pm.expect(jsonData.photoUrls[1]).to.eql(reqBody.photoUrls[1]);\r",
+									" })\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": {{$randomInt}},\r\n  \"category\": {\r\n    \"id\": 13,\r\n    \"name\": \"Рыбка\"\r\n  },\r\n  \"name\": \"{{$randomUserName}}\",\r\n  \"photoUrls\": [\r\n    \"{{$randomUrl}}\", \"{{$randomUrl}}\" \r\n\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 66,\r\n      \"name\": \"лещ\"\r\n    },\r\n    {\r\n      \"id\": 67,\r\n      \"name\": \"судак\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}v2/pet",
+							"host": [
+								"{{url}}v2"
+							],
+							"path": [
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Обновление информации питомца",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json()\r",
+									"const reqBody = JSON.parse(request.data)\r",
+									"\r",
+									"pm.test(\"Обновление питомца. Проверка что статускод 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"   pm.test(\"Обновление питомца. Проверка что id в теле запроса и ответа одинаковые\", function () {\r",
+									"    pm.expect(jsonData.id).to.eql(reqBody.id);\r",
+									" })\r",
+									"\r",
+									"pm.test(\"Обновление питомца. Проверка что присутствует id в категориях \", function (){\r",
+									"    pm.expect(jsonData.category).to.have.property(\"id\")\r",
+									" }) \r",
+									"\r",
+									" pm.test(\"Обновление питомца. Проверка name равен Рыбка\", function () {\r",
+									"    pm.expect(jsonData.category.name).to.eql(\"Рыбка\");\r",
+									" })\r",
+									"\r",
+									"  pm.test(\"Обновление питомца. Проверка tags в самом первом блоке = лещ-взрослый\", function () {\r",
+									"    pm.expect(jsonData.tags[0].name).to.eql(\"лещ-взрослый\");\r",
+									" })\r",
+									"\r",
+									"   pm.test(\"Обновление питомца. Проверка что в photoUrls в запросе равен photoUrls в ответе\", function () {\r",
+									"    pm.expect(jsonData.photoUrls[1]).to.eql(reqBody.photoUrls[1]);\r",
+									" })"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": {{id}},\r\n  \"category\": {\r\n    \"id\": 13,\r\n    \"name\": \"Рыбка\"\r\n  },\r\n  \"name\": \"Белка\",\r\n  \"photoUrls\": [\r\n    \"{{$randomUrl}}\", \"{{$randomUrl}}\" \r\n\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 66,\r\n      \"name\": \"лещ-взрослый\"\r\n    },\r\n    {\r\n      \"id\": 67,\r\n      \"name\": \"судак\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}v2/pet",
+							"host": [
+								"{{url}}v2"
+							],
+							"path": [
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Поиск статуса животных",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json()\r",
+									"\r",
+									"pm.test(\"Поиск статуса питомца. Проверка что статускод 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Поиск статуса питомца. Проверить тип данных параметр ID, name\", function () {\r",
+									"pm.expect(jsonData[0].id).to.be.a(\"number\");\r",
+									"pm.expect(jsonData[0].name).to.be.a(\"string\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Поиск статуса питомца. Проверка всей структуры ответа \", function (){\r",
+									"    pm.expect(jsonData[1].status).to.eql(\"available\");\r",
+									"    pm.expect(jsonData[0].status).to.eql(\"available\");\r",
+									"}) "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}v2/pet/findByStatus?status={{status}}",
+							"host": [
+								"{{url}}v2"
+							],
+							"path": [
+								"pet",
+								"findByStatus"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "{{status}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Поиск животного по id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json()\r",
+									"\r",
+									"pm.test(\"Поиск питомца по id. Проверка что статускод 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Поиск питомца по id. Проверка что присутствует id в категориях \", function (){\r",
+									"    pm.expect(jsonData.category).to.have.property(\"id\")\r",
+									" }) \r",
+									"\r",
+									" pm.test(\"Поиск питомца по id. Проверка name равен Рыбка\", function () {\r",
+									"    pm.expect(jsonData.category.name).to.eql(\"Рыбка\");\r",
+									" })\r",
+									"\r",
+									"  pm.test(\"Поиск питомца по id. Проверка tags в самом первом блоке = лещ-взрослый\", function () {\r",
+									"    pm.expect(jsonData.tags[0].name).to.eql(\"лещ-взрослый\");\r",
+									" })\r",
+									"\r",
+									"   pm.test(\"Поиск питомца по id. Проверка что name = Белка\", function () {\r",
+									"    pm.expect(jsonData.name).to.eql(\"Белка\");\r",
+									" })"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}v2/pet/{{id}}",
+							"host": [
+								"{{url}}v2"
+							],
+							"path": [
+								"pet",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удаление питомца",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json()\r",
+									"\r",
+									"pm.test(\"Удаление питомца. Проверка что статускод 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Удаление питомца. Проверка всей структуры ответа \", function (){\r",
+									"    pm.expect(jsonData).to.have.property(\"code\")\r",
+									"    pm.expect(jsonData).to.have.property(\"type\")\r",
+									"    pm.expect(jsonData).to.have.property(\"message\")\r",
+									"}) \r",
+									"\r",
+									"pm.test(\"Удаление питомца. Проверка всей структуры ответа чему равны значения\", function () {\r",
+									"    pm.expect(jsonData.code).to.eql(200);\r",
+									"    pm.expect(jsonData.type).to.eql(\"unknown\");\r",
+									"    //pm.expect(jsonData.message).to.eql(pm.environment.get(\"id\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}v2/pet/{{id}}",
+							"host": [
+								"{{url}}v2"
+							],
+							"path": [
+								"pet",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
